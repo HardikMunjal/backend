@@ -287,7 +287,7 @@ app.set('view engine', 'html');
 
                 
                 //MAKE IT DYNAMIC
-                userB.team_ids: ["59fc23ca932777263811b7e3"],
+                userB.team_ids = ["59fc23ca932777263811b7e3"];
                 userB.active='true';
                 userB.fullname=user['nombre'];
                 userB.password='exo#123';
