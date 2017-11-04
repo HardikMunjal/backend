@@ -44,24 +44,24 @@ var customer = {
 
     console.log(req.body);
 
-    var storage = multer.diskStorage({ //multers disk storage settings
-        destination: function (req, file, cb) {
-            cb(null, './images/user/')
-        },
-        filename: function (req, file, cb) {
-            var datetimestamp = Date.now();
-            callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
-        }
-    });
-    var upload = multer({ //multer settings
-                    storage: storage,
-                    fileFilter : function(req, file, callback) { //file filter
-                        if (['jpg', 'png'].indexOf(file.originalname.split('.')[file.originalname.split('.').length-1]) === -1) {
-                            return callback(new Error('Wrong extension type'));
-                        }
-                        callback(null, true);
-                    }
-                }).any();
+    // var storage = multer.diskStorage({ //multers disk storage settings
+    //     destination: function (req, file, cb) {
+    //         cb(null, './images/user/')
+    //     },
+    //     filename: function (req, file, cb) {
+    //         var datetimestamp = Date.now();
+    //         callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+    //     }
+    // });
+    // var upload = multer({ //multer settings
+    //                 storage: storage,
+    //                 fileFilter : function(req, file, callback) { //file filter
+    //                     if (['jpg', 'png'].indexOf(file.originalname.split('.')[file.originalname.split('.').length-1]) === -1) {
+    //                         return callback(new Error('Wrong extension type'));
+    //                     }
+    //                     callback(null, true);
+    //                 }
+    //             }).any();
 
 
     // if(!req.body.username || !req.body.email || !req.body.password || !req.body.active || !req.body.firstname || !req.body.lastname || !req.body.national_id || !req.body.id_photo || !req.body.user_photo || !req.body.company || !req.body.city || !req.body.department || !req.body.position || !req.body.role){
