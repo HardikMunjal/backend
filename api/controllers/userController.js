@@ -6,7 +6,7 @@ var customer = {
   fetchAllUser: function(req, res, next) {
    
     var data = {};
-    data.limit=100;
+    data.limit=10000;
     userModel.fetchAllUser(data,function(err, result){
       if(err){
         return res.status(410).send(err.message);

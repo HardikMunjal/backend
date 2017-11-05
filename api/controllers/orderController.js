@@ -6,7 +6,7 @@ var order = {
   fetchAllOrder: function(req, res, next) {
    
     var data = {};
-    data.limit=100;
+    data.limit=10000;
     orderModel.fetchAllOrder(data,function(err, result){
       if(err){
         return res.status(410).send(err.message);
