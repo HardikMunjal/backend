@@ -22,7 +22,7 @@ var cModel = {
       if(err){
         return cb(err)
       }else{
-        console.log(result);
+        //console.log(result);
 
         return cb(null,result);
       }
