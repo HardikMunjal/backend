@@ -204,6 +204,7 @@ app.set('view engine', 'html');
               if(customer.customer){
 
                 customerB.name=customer['customer name'];
+                customerB.active='true';
                 customerB.country=customer['country'];
                // customerB.city=order.coc_cli;
                 customerB.address=customer['address'];
