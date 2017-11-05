@@ -21,7 +21,7 @@ var cModel = {
       if(err){
         return cb(err)
       }else{
-        console.log(result)
+        //console.log(result)
         var extensibleteam = result;
 
         return cb(null,extensibleteam);
