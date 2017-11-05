@@ -11,7 +11,7 @@ var customer = {
       if(err){
         return res.status(410).send(err.message);
       }
-      console.log('resrsrsr',result)
+      //console.log('resrsrsr',result)
       return res.json(result)
       })
   },
