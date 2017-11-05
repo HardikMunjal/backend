@@ -12,8 +12,9 @@ var UserSchema = new Schema({
     
     user_id: { 
         type: String,
-        default:null,
-        required: true, index: { unique: true } 
+        default:null
+        // ,
+        // required: true, index: { unique: true } 
     },
     fullname: { 
         type: String,
@@ -27,8 +28,9 @@ var UserSchema = new Schema({
     },
     email: { 
     	type: String,
-        default:null,
-        required: true, index: { unique: true } 
+        default:null
+        // ,
+        // required: true, index: { unique: true } 
     },
     password: { 
     	type: String,
