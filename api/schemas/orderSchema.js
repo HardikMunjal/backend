@@ -33,7 +33,6 @@ var orderSchema = new Schema({
 	},
 	order_num:{
 		type:String,
-		default:null,
 		required: true,
 		index: { unique: true }
 	},
