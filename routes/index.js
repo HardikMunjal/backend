@@ -9,7 +9,10 @@ var rightCtlr = require('../api/controllers/rightController');
 var areaCtlr = require('../api/controllers/coveringAreaController');
 var teamCtlr = require('../api/controllers/teamController');
 var orderCtlr = require('../api/controllers/orderController');
+var vehicleCtlr = require('../api/controllers/vehicleController');
+var driverCtlr = require('../api/controllers/driverController');
 var roleRightCtlr = require('../api/controllers/roleRightController');
+var transporterCtlr = require('../api/controllers/transporterController');
 var xlsxj = require("xlsx-to-json");
 
 module.exports = function (app) {
@@ -102,11 +105,28 @@ module.exports = function (app) {
      app.post('/trk/area/:coveringArea_id', areaCtlr.updateCoveringArea);
      app.delete('/trk/area/:coveringArea_id',areaCtlr.deleteCoveringArea);
 
+     
 
+    //**************** ORDER BASED API
      app.get('/trk/order', orderCtlr.fetchAllOrder);
      app.get('/trk/order/:order_id', orderCtlr.fetchOrder);
      app.post('/trk/order', orderCtlr.createNewOrder);
      app.post('/trk/order/:order_id', orderCtlr.updateOrder);
      app.delete('/trk/order/:order_id',orderCtlr.deleteOrder);
+
+
+
+    //****************TRANSPORTER BASED API
+     app.post('/trk/transporter', transporterCtlr.createNewTransporter);
+     //app.post('/trk/order/:order_id', orderCtlr.updateOrder);
+     //app.delete('/trk/order/:order_id',orderCtlr.deleteOrder);
+
+
+  //****************Vehicle BASED API
+     app.post('/trk/vehicle', vehicleCtlr.createNewVehicle);
+
+  //****************DRIVER BASED API
+     app.post('/trk/driver', driverCtlr.createNewDriver);
+
 
 }
