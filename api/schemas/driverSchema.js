@@ -5,6 +5,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var User = require('./userSchema');
+var Vehicle = require('./vehicleSchema');
+
 
 
 var driverSchema = new Schema({
@@ -36,6 +38,10 @@ var driverSchema = new Schema({
 		type:String,
 		default:null
 	},
+	vehicle_ids: [{
+					 type: Schema.Types.ObjectId,
+					  ref: 'vehicle' 
+					}],
 	license_no:{
 		type:String,
 		default:null

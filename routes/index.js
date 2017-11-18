@@ -117,16 +117,24 @@ module.exports = function (app) {
 
 
     //****************TRANSPORTER BASED API
+     app.get('/trk/transporter', transporterCtlr.fetchAllTransporter);
+     app.get('/trk/transporter/:transporter_id', transporterCtlr.fetchTransporter);
      app.post('/trk/transporter', transporterCtlr.createNewTransporter);
+
      //app.post('/trk/order/:order_id', orderCtlr.updateOrder);
      //app.delete('/trk/order/:order_id',orderCtlr.deleteOrder);
 
 
   //****************Vehicle BASED API
      app.post('/trk/vehicle', vehicleCtlr.createNewVehicle);
+     app.get('/trk/vehicle', vehicleCtlr.fetchAllVehicle);
+     app.get('/trk/vehicle/:vehicle_id', vehicleCtlr.fetchVehicle);
+     
 
   //****************DRIVER BASED API
      app.post('/trk/driver', driverCtlr.createNewDriver);
+     app.get('/trk/driver', driverCtlr.fetchAllDriver);
+     app.get('/trk/driver/:driver_id', driverCtlr.fetchDriver);
 
 
 }

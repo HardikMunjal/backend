@@ -48,7 +48,7 @@ var transporterSchema = new Schema({
 	},
 	service_ids:[{
 					 type: Schema.Types.ObjectId,
-					  ref: 'Service' 
+					  ref: 'service' 
 					}],
 	fullname:{
        type:String,
@@ -68,11 +68,11 @@ var transporterSchema = new Schema({
 	},
 	driver_ids: [{
 					 type: Schema.Types.ObjectId,
-					  ref: 'Driver' 
+					  ref: 'driver' 
 					}],
 	vehicle_ids: [{
 					 type: Schema.Types.ObjectId,
-					  ref: 'Vehicle' 
+					  ref: 'vehicle' 
 					}],
 	createdAt:{
 		type:Date,

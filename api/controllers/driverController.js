@@ -23,7 +23,41 @@ var customer = {
         }
         return res.json("Customer added successfully");
     })
+  },
+
+  fetchAllDriver: function(req, res, next) {
+   
+    var data = {};
+    data.limit=100;
+    driverModel.fetchAllDriver(data,function(err, result){
+      if(err){
+        return res.status(410).send(err.message);
+      }
+      console.log('resrsrsr',result)
+      return res.json(result)
+      })
+  },
+
+  fetchDriver: function(req, res, next) {
+   
+    var data = {};
+    data.driver_id = req.params.driver_id ? req.params.driver_id : null;
+
+    driverModel.fetchDriver(data,function(err, result){
+        if(err && err==='Not Found'){
+          var message = "Driver Id Not Found"
+         return res.status(410).send(message);
+         }
+        
+        else if(err){
+          return res.status(410).send(err.message);
+        }
+         
+         return res.json(result);
+      })
+
   }
+
 
 }
 module.exports = customer;
