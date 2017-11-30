@@ -45,7 +45,29 @@ var cModel = {
         return cb(null,extensibleRight);
       }
     })
-   }
+   },
+
+   updateTransporter: function(data,cb){
+      
+       Transporter.update({_id: data.c_id}, data.transporter, function(err, result) {
+        console.log(err,result)
+        if (err) {
+          return cb(err);
+        }
+        return cb(null,result);
+      });
+      
+    },
+
+   deleteTransporter: function(data,cb){
+      
+      Transporter.findOneAndRemove({_id: data.c_id}, function(err, result) {
+        if (err) return cb(err);
+
+        // we have deleted the user
+        return cb(null,result);
+      });
+    },
   };
 
 

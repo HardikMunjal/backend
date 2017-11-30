@@ -56,6 +56,36 @@ var customer = {
          return res.json(result);
       })
 
+  },
+
+   updateTransporter: function(req, res, next) {
+      
+   var data={};
+   data.c_id = req.params.transporter_id ? req.params.transporter_id : null;
+   data.transporter=req.body;
+    transporterModel.updateTransporter(data,function(err, result){
+      if(err){
+        return res.status(410).send(err.message);
+      }
+
+        console.log(result)
+         return res.json("Transporter updated successfully");
+    })
+
+  },
+
+  deleteTransporter: function(req, res, next) {
+      
+   var data={};
+   data.c_id = req.params.transporter_id ? req.params.transporter_id : null;
+   transporterModel.deleteTransporter(data,function(err, result){
+        if(err){
+          return res.status(410).send(err.message);
+        }
+        console.log(result)
+        return res.json("Transporter deleted successfully");
+    })
+
   }
 
 

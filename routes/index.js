@@ -120,6 +120,8 @@ module.exports = function (app) {
      app.get('/trk/transporter', transporterCtlr.fetchAllTransporter);
      app.get('/trk/transporter/:transporter_id', transporterCtlr.fetchTransporter);
      app.post('/trk/transporter', transporterCtlr.createNewTransporter);
+     app.post('/trk/transporter/:transporter_id', transporterCtlr.updateTransporter);
+     app.delete('/trk/transporter/:transporter_id',transporterCtlr.deleteTransporter);
 
      //app.post('/trk/order/:order_id', orderCtlr.updateOrder);
      //app.delete('/trk/order/:order_id',orderCtlr.deleteOrder);
