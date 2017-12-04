@@ -56,6 +56,36 @@ var customer = {
          return res.json(result);
       })
 
+  },
+
+  updateVehicle: function(req, res, next) {
+      
+   var data={};
+   data.c_id = req.params.vehicle_id ? req.params.vehicle_id : null;
+   data.vehicle=req.body;
+    vehicleModel.updateVehicle(data,function(err, result){
+      if(err){
+        return res.status(410).send(err.message);
+      }
+
+        console.log(result)
+         return res.json("Vehicle updated successfully");
+    })
+
+  },
+
+  deleteVehicle: function(req, res, next) {
+      
+   var data={};
+   data.c_id = req.params.vehicle_id ? req.params.vehicle_id : null;
+   vehicleModel.deleteVehicle(data,function(err, result){
+        if(err){
+          return res.status(410).send(err.message);
+        }
+        console.log(result)
+        return res.json("Vehicle deleted successfully");
+    })
+
   }
 
 }

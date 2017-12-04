@@ -83,7 +83,29 @@ var cModel = {
         return cb(null,extensibleRight);
       }
     })
-   }
+   },
+
+   updateVehicle: function(data,cb){
+      
+       Vehicle.update({_id: data.c_id}, data.vehicle, function(err, result) {
+        console.log(err,result)
+        if (err) {
+          return cb(err);
+        }
+        return cb(null,result);
+      });
+      
+    },
+
+   deleteVehicle: function(data,cb){
+      
+      Vehicle.findOneAndRemove({_id: data.c_id}, function(err, result) {
+        if (err) return cb(err);
+
+        // we have deleted the user
+        return cb(null,result);
+      });
+    }
   };
 
 

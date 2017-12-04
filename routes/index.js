@@ -131,12 +131,16 @@ module.exports = function (app) {
      app.post('/trk/vehicle', vehicleCtlr.createNewVehicle);
      app.get('/trk/vehicle', vehicleCtlr.fetchAllVehicle);
      app.get('/trk/vehicle/:vehicle_id', vehicleCtlr.fetchVehicle);
+     app.post('/trk/vehicle/:vehicle_id', vehicleCtlr.updateVehicle);
+     app.delete('/trk/vehicle/:vehicle_id',vehicleCtlr.deleteVehicle);
      
 
   //****************DRIVER BASED API
      app.post('/trk/driver', driverCtlr.createNewDriver);
      app.get('/trk/driver', driverCtlr.fetchAllDriver);
      app.get('/trk/driver/:driver_id', driverCtlr.fetchDriver);
+     app.post('/trk/driver/:driver_id', driverCtlr.updateDriver);
+     app.delete('/trk/driver/:driver_id',driverCtlr.deleteDriver);
 
 
 }

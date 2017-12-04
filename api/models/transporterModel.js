@@ -67,7 +67,7 @@ var cModel = {
         // we have deleted the user
         return cb(null,result);
       });
-    },
+    }
   };
 
 

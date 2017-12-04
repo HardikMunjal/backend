@@ -64,7 +64,28 @@ var cModel = {
         return cb(null,extensibleRight);
       }
     })
-   }
+   },
+   updateDriver: function(data,cb){
+      
+       Driver.update({_id: data.c_id}, data.driver, function(err, result) {
+        console.log(err,result)
+        if (err) {
+          return cb(err);
+        }
+        return cb(null,result);
+      });
+      
+    },
+
+   deleteDriver: function(data,cb){
+      
+      Driver.findOneAndRemove({_id: data.c_id}, function(err, result) {
+        if (err) return cb(err);
+
+        // we have deleted the user
+        return cb(null,result);
+      });
+    }
   };
 
 

@@ -56,6 +56,37 @@ var customer = {
          return res.json(result);
       })
 
+  },
+
+  
+   updateDriver: function(req, res, next) {
+      
+   var data={};
+   data.c_id = req.params.driver_id ? req.params.driver_id : null;
+   data.driver=req.body;
+    driverModel.updateDriver(data,function(err, result){
+      if(err){
+        return res.status(410).send(err.message);
+      }
+
+        console.log(result)
+         return res.json("driver updated successfully");
+    })
+
+  },
+
+  deleteDriver: function(req, res, next) {
+      
+   var data={};
+   data.c_id = req.params.driver_id ? req.params.driver_id : null;
+   driverModel.deleteDriver(data,function(err, result){
+        if(err){
+          return res.status(410).send(err.message);
+        }
+        console.log(result)
+        return res.json("driver deleted successfully");
+    })
+
   }
 
 
