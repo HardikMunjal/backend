@@ -65,11 +65,68 @@ app.set('view engine', 'html');
                     }
                 }).any();
 
+
+    //********************************* IMAGE UPLOAD FUNCTIONALITY *********************************
+
+    var storagePic = multer.diskStorage({ //multers disk storage settings
+        destination: function (req, file, cb) {
+            cb(null, './uploads/')
+        },
+        filename: function (req, file, cb) {
+            var datetimestamp = Date.now();
+            cb(null, req.query.user_id + '.' + file.originalname.split('.')[file.originalname.split('.').length -1])
+        }
+    });
+    var uploadPic = multer({ //multer settings
+                    storage: storagePic,
+                    fileFilter : function(req, file, callback) { //file filter
+                        if (['jpg', 'gif' ,'png'].indexOf(file.originalname.split('.')[file.originalname.split('.').length-1]) === -1) {
+                            return callback(new Error('Wrong extension type'));
+                        }
+                        callback(null, true);
+                    }
+                }).any();
+
+
+
     var fileHandler;
     /** API path that will upload the files */
     app.post('/upload', function(req, res) {
 
         
+        if(req.query.company){
+
+          var comapny=req.query.company;
+          var user_id=req.query.user_id;
+          var orderFormat = {};
+                
+          if(comapny=='herballife'){
+            var sheet= 'YOBEL_SCM';
+
+            orderFormat.order_num='pedido';
+            orderFormat.client_name='cliente'
+            orderFormat.client_id='coc_cli'
+            orderFormat.product_id='producto'
+            orderFormat.qty='cantidad'
+          }
+          else if(comapny=='herballife'){
+            var sheet= 'YOBEL_SCM';
+            orderFormat.order_num='pedido';
+            orderFormat.client_name='cliente'
+            orderFormat.client_id='coc_cli'
+            orderFormat.product_id='producto'
+            orderFormat.qty='cantidad'
+          }
+          else if(comapny=='herballife'){
+            var sheet= 'YOBEL_SCM';
+            orderFormat.order_num='pedido';
+            orderFormat.client_name='cliente'
+            orderFormat.client_id='coc_cli'
+            orderFormat.product_id='producto'
+            orderFormat.qty='cantidad'
+          }
+
+        }
         var exceltojson;
         var imported_filename;
         upload(req,res,function(err){
@@ -119,11 +176,11 @@ app.set('view engine', 'html');
               console.log(result)
               result.forEach(function(order, index) {
 
-                orderB.order_num=order.pedido;
-                orderB.client_name=order.cliente;
-                orderB.client_id=order.coc_cli;
-                orderB.product_id=order.producto;
-                orderB.qty= order.cantidad;
+                orderB.order_num= orderFormat.order_num;
+                orderB.client_name=orderFormat.client_name;
+                orderB.client_id=orderFormat.client_id;
+                orderB.product_id=orderFormat.product_id;
+                orderB.qty= orderFormat.qty;
                 orderB.imported_filename = imported_filename;
 
                 if(orderB.order_num && orderB.product_id){
@@ -236,6 +293,40 @@ app.set('view engine', 'html');
             }
         })
     }); 
+
+
+    // app.post('/upload/image', function(req, res) {
+
+
+
+    //     upload(req,res,function(err){
+    //         if(err){
+    //              console.log(err)
+    //              res.json({error_code:101,err_desc:err});
+    //              return;
+    //         }
+    //         console.log('number of files',req.files[0])
+
+    //         fileHandler=req.files[0];
+    //         /** Multer gives us file info in req.file object */
+
+    //         if(!fileHandler){
+    //             res.json({error_code:1,err_desc:"No file passed"});
+    //             return;
+    //         }
+    //         userModel.updateImageInfo(data,function(err, result){
+
+    //               if(result){
+    //                 console.log(result)
+    //                 return res.json("User added successfully");
+    //               }else{
+    //                 return res.json(err);
+    //               }
+    //             })
+           
+    //     })
+    // }); 
+
 
      app.post('/upload/user', function(req, res) {
 
