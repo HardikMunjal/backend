@@ -60,6 +60,10 @@ var orderSchema = new Schema({
 	created_by:{
 		type:String,
 		default:null
+	},
+	isactive:{
+		type:Boolean,
+		default:1
 	}
 });
 

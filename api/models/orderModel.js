@@ -7,7 +7,7 @@ var oModel = {
 
   fetchAllOrder: function(data,cb){
     
-     Order.find({}).limit(data.limit).lean().exec(function(err, result){
+     Order.find({isactive:1}).limit(data.limit).lean().exec(function(err, result){
 
       if(err){
         return cb(err)
@@ -22,7 +22,7 @@ var oModel = {
   fetchOrder: function(data,cb){
     
     //var Right=[];
-    Order.find({_id:data.o_id}).exec(function(err, result){
+    Order.find({_id:data.o_id,isactive:1}).exec(function(err, result){
 
      if(err){
         return cb(err)
@@ -45,24 +45,39 @@ var oModel = {
     },
  
   updateOrder: function(data,cb){
-      
-       Order.update({_id: data.o_id}, data.order, function(err, result) {
+    // data.order
+    var json = data.order;
+    var order = new Order(json)
+    
+       Order.update({_id: data.o_id,isactive:1}, {isactive:0}, function(err, result) {
         console.log(err,result)
         if (err) {
           return cb(err);
         }
-        return cb(null,result);
+        order.save(function(err, result){
+          return cb(null,result);
+         //}
+         })
+        // return cb(null,result);
       });
       
     },
 
    deleteOrder: function(data,cb){
       
-      Order.findOneAndRemove({_id: data.o_id}, function(err, result) {
-        if (err) return cb(err);
+      // Order.findOneAndRemove({_id: data.o_id}, function(err, result) {
+      //   if (err) return cb(err);
 
-        // we have deleted the user
-        return cb(null,result);
+      //   // we have deleted the user
+      //   return cb(null,result);
+      // });
+      
+      Order.update({_id: data.o_id,isactive:1}, {isactive:0}, function(err, result) {
+        console.log(err,result)
+        if (err) {
+          return cb(err);
+        }
+         return cb(null,result);
       });
     },
 

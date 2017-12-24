@@ -11,7 +11,7 @@ var customer = {
       if(err){
         return res.status(410).send(err.message);
       }
-      //console.log('resrsrsr',result)
+      console.log('resrsrsr',result)
       return res.json(result)
       })
   },
@@ -42,7 +42,7 @@ var customer = {
     var missing = false;   
    
 
-    console.log(req.body);
+    console.log(req.body,'####################f');
 
     // var storage = multer.diskStorage({ //multers disk storage settings
     //     destination: function (req, file, cb) {
